@@ -9,10 +9,10 @@
   "heroes": [
     {
       "id": "dc-batman",
-      "superhero": "Batman",
+      "superhero": "Batman.",
       "publisher": "DC Comics",
       "alter_ego": "Bruce Wayne",
-      "first_appearance": "Detective Comics #27",
+      "first_appearance": "Detective Comics #2",
       "characters": "Bruce Wayne"
     },
     {
