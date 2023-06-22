@@ -95,9 +95,11 @@
     <mat-card>
       <img
         matCardImage
-        src=""
+        [src]="currentHero | heroImage"
         alt="Imagen del héroe"
       >
     </mat-card>
   </div>
 </div>
+
+<pre> {{currentHero | json}}</pre>
