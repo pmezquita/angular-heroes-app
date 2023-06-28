@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {User} from "../interfaces/user.interface";
-import {Observable, tap} from "rxjs";
+import {catchError, map, Observable, of, tap} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -32,5 +32,17 @@ export class AuthService {
   logout() {
     this.user = undefined;
     localStorage.clear();
+  }
+
+  checkAuthentication(): Observable<boolean> | boolean {
+    const token = localStorage.getItem('token');
+    if (!token) return false;
+
+    return this.http.get<User>(`${this.baseUrl}/users/1`)
+      .pipe(
+        tap(user => this.user = user),
+        map(user => !!user),
+        catchError(() => of(false)),
+      );
   }
 }
